@@ -18,6 +18,22 @@ router.get("/api/users", async (request, response) => {
     }
 });
 
+//get user by id
+//http://localhost:3001/api/users
+router.get("/api/users", async (request, response) => {
+    try {
+        const _id = request.body;
+        console.log("getting all users...");
+        const user = await userLogic.getUserById(_id);
+        
+        console.log("users has been sent...");
+        response.json(users);
+    }
+    catch (err) {
+        response.status(500).send(err.message);
+    }
+});
+
 //add user to DB
 //http://localhost:3001/api/users
 router.post("/api/users", async (request, response) => {

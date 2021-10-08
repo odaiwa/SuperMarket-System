@@ -6,6 +6,10 @@ function getAllUsers() {
     return UserModel.find().exec();
 }
 
+function getUserById(_id){
+    return UserModel.findById(_id).exec();
+}
+
 
 function addUser(user) {
     return user.save();
@@ -14,4 +18,5 @@ function addUser(user) {
 module.exports = {
     getAllUsers,
     addUser,
+    getUserById
 };

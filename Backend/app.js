@@ -3,10 +3,12 @@ const express = require("express");
 const cors = require("cors");
 const server = express();
 const userController = require("./controllers-layer/user-controller");
+const categoryController = require("./controllers-layer/category-controller");
 server.use(express.json());
-
+server.use(cors());
 
 server.use("/", userController);
+server.use("/api/category", categoryController);
 
 
 
