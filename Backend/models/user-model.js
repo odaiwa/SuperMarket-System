@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const UserSchema = mongoose.Schema({
+    // _id:mongoose.Types.ObjectId,
     firstName: String,
     lastName: String,
     username: String,
@@ -10,9 +11,10 @@ const UserSchema = mongoose.Schema({
         street: String
     },
     isAdmin: Number,
-    id:String
+    userId:String
 }, {
-    versionKey: false
+    versionKey: false,
+    // _id: false
 });
 
 const UserModel = mongoose.model("UserModel", UserSchema, "users");

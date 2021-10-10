@@ -1,0 +1,32 @@
+.login-form>form {
+  border: 1px solid gray;
+  width: 290px;
+  height: 450px;
+  padding: 20px;
+  text-align: center;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 20px;
+  background-color: aliceblue;
+}
+
+.email-input {
+  width: 95%
+}
+
+button {
+  width: 90%;
+}
+
+.forget-password {
+  margin-top: 5px;
+}
+
+.inputs-container {
+  margin-top: 30%;
+}
+
+.new-account {
+  text-align: center;
+  margin-top: 28%;
+}

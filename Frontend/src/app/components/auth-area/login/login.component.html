@@ -1,0 +1,39 @@
+<div class="login-container">
+
+    <div class="login-form">
+        <form (submit)="login()">
+            <h2>התחברות למערכת</h2>
+            <div class="inputs-container">
+                <div >
+                    <mat-form-field class="email-input" appearance="fill">
+                        <mat-label>אימייל:</mat-label>
+                        <input  matInput placeholder="example@example.com" required [(ngModel)]="credentials.username" name="username">
+                        <mat-icon mat-icon-button matSuffix>email</mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="email-input" appearance="fill">
+                        <mat-label>סיסמה:</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="credentials.password" name="password">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <button mat-raised-button color="primary">התחבר</button>
+            <div class="forget-password">
+                <a routerLink="#">שכחת סיסמה?</a>
+            </div>
+
+            <div class="new-account">
+                <p>אין לך חשבון? <a routerLink="/register">הרשם למערכת</a></p>
+            </div>
+        </form>
+    </div>
+
+
+</div>

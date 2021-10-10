@@ -8,9 +8,7 @@ const router = express.Router();
 //http://localhost:3001/api/users
 router.get("/api/users", async (request, response) => {
     try {
-        console.log("getting all users...");
         const users = await userLogic.getAllUsers();
-        console.log("users has been sent...");
         response.json(users);
     }
     catch (err) {
@@ -20,14 +18,13 @@ router.get("/api/users", async (request, response) => {
 
 //get user by id
 //http://localhost:3001/api/users
-router.get("/api/users", async (request, response) => {
+router.get("/api/users/:_id", async (request, response) => {
     try {
-        const _id = request.body;
-        console.log("getting all users...");
+        const _id = request.params._id;
         const user = await userLogic.getUserById(_id);
-        
-        console.log("users has been sent...");
-        response.json(users);
+        //check if the user exists in DB.
+        if(!user) return response.status(404).send(`_id ${_id} not found`);
+        response.json(user);
     }
     catch (err) {
         response.status(500).send(err.message);

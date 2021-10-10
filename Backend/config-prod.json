@@ -1,5 +1,7 @@
 {
     "mongodb": {
         "connectionString": "mongodb://localhost:27017/superMarketDB"
-    }
+    },
+    "jwtKey": "5AlTF0rPas2w0Rd"
+
 }

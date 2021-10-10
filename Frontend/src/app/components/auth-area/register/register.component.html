@@ -1,0 +1,102 @@
+<div class="login-container">
+
+    <div class="login-form">
+        <form (submit)="register()" #formInfo="ngForm">
+            <h2>הרשמה למערכת</h2>
+            <div class="inputs-container">
+                <div>
+                    <mat-form-field class="email-input" appearance="fill">
+                        <mat-label>שם פרטי:</mat-label>
+                        <input matInput placeholder="משה" type="text" required name="firstName" [(ngModel)]="user.firstName"
+                            #firstName="ngModel">
+                        <mat-icon mat-icon-button matSuffix>account_circle</mat-icon>
+                    </mat-form-field>
+                    <!-- <span class="errors-span" *ngIf="firstName.errors?.maxlength && firstName.touched"> שם פרטי ארוך מדי</span> -->
+                </div>
+                <span class="errors-span" *ngIf="firstName.invalid && firstName.touched">  שם פרטי קצר מדי</span>
+                <div>
+                    <mat-form-field class="email-input" appearance="fill">
+                        <mat-label>שם משפחה:</mat-label>
+                        <input matInput placeholder="אופניק" type="text" minlength="2" maxlength="30" required name="lastName" [(ngModel)]="user.lastName"
+                            #lastName="ngModel">
+                        <mat-icon mat-icon-button matSuffix>assignment_ind</mat-icon>
+                    </mat-form-field>
+                    <!-- <span class="errors-span" *ngIf="lastName.invalid && lastName.touched">חסר שם</span> -->
+                    <!-- <span class="errors-span" *ngIf="lastName.errors?.maxlength && lastName.touched"> שם משפחה ארוך מדי</span> -->
+                    
+                </div>
+                <span class="errors-span" *ngIf="lastName.invalid && lastName.touched">  שם משפחה צריך להיות בין 2-30 תווים</span>
+                <div>
+                    <mat-form-field class="email-input" appearance="fill">
+                        <mat-label>תעודת זהות:</mat-label>
+                        <input matInput placeholder="123456789" type="number" maxlength="9" minlength="6" required name="userId" [(ngModel)]="user.userId"
+                        #userId="ngModel">
+                        <mat-icon mat-icon-button matSuffix><span class="material-icons">
+                            perm_identity
+                        </span>
+                        <span class="material-icons">
+                            numbers
+                        </span></mat-icon>
+                    </mat-form-field>
+                </div>
+                <span class="errors-span" *ngIf="(userId.invalid) && userId.touched">  מספר תעודאת זהות צריך להיות בי 6-9 תווים</span>
+                <span class="errors-span" *ngIf="(userId.errors?.minlength || userId.errors?.maxlength) && userId.touched">  מספר תעודאת זהות צריך להיות בי 6-9 תווים</span>
+                <div>
+                    <mat-form-field class="email-input" appearance="fill">
+                        <mat-label>אימייל:</mat-label>
+                        <input matInput placeholder="example@example.com" required name="username" email="true"
+                        [(ngModel)]="user.username" type="email" #username="ngModel">
+                        <mat-icon mat-icon-button matSuffix>email</mat-icon>
+                    </mat-form-field>
+                </div>
+                <span class="errors-span" *ngIf="username.errors?.email && username.touched"> אימייל צריך להיות מהצורה exp@exp.exp </span>
+                <!-- <span class="errors-span" *ngIf="username.invalid && username.touched">  מספר תעודאת זהות צריך להיות בי 6-9 תווים</span> -->
+                
+                <div>
+                    <mat-form-field class="email-input" appearance="fill">
+                        <mat-label>סיסמה:</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" required name="password" minlength="4"
+                        maxlength="50"
+                        [(ngModel)]="user.password" #password="ngModel">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                <span class="errors-span" *ngIf="(password.errors?.minlength||password.errors?.maxlength) && password.touched"> סיסמה צריכה להיות בין 4-50 תווים</span>
+                <div>
+
+                    <mat-form-field class="email-input" appearance="fill">
+                        <mat-label>עיר מגורים:</mat-label>
+                        <input matInput placeholder="תל-אביב" minlength="2" maxlength="30" type="text" required name="city" [(ngModel)]="address.city"
+                        #city="ngModel">
+                        <mat-icon mat-icon-button matSuffix>location_city</mat-icon>
+                    </mat-form-field>
+                </div>
+                <span class="errors-span" *ngIf="(city.errors?.minlength || city.errors?.maxlength) && city.touched">  שם עיר צריך להיות בין 2-30 תווים</span>
+                <div>
+
+                    <mat-form-field class="email-input" appearance="fill">
+                        <mat-label>רחוב:</mat-label>
+                        <input matInput required minlength="2" maxlength="30" placeholder="רחוב דיזנגוף" type="text" name="street" [(ngModel)]="address.street"
+                            #street="ngModel">
+                        <mat-icon mat-icon-button matSuffix><span class="material-icons">
+                            add_road
+                        </span></mat-icon>
+                    </mat-form-field>
+                </div>
+                <span class="errors-span" *ngIf="(street.errors?.minlength || street.errors?.maxlength) && street.touched">  שם רחוב צריך להיות בין 2-30 תווים</span>
+            </div>
+            
+
+            <button mat-raised-button color="primary">הרשם</button>
+
+            <div class="new-account">
+                <p>יש לך חשבון? <a routerLink="/login">התחבר למערכת</a></p>
+            </div>
+        </form>
+    </div>
+
+
+</div>
