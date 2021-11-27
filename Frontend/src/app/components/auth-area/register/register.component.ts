@@ -14,7 +14,18 @@ export class RegisterComponent {
     constructor(private authService: AuthService, private router: Router) { }
     public user = new UserModel();
     public address = new AddressModel();
+    public step:number = 1;
+   
+    public nextpage(){
+        this.step = this.step + 1;
+        console.log(this.step);
+    }
 
+    public previsePage(){
+        this.step = this.step - 1;
+        console.log(this.step);
+    }
+    
     public async register() {
         try {
             this.user.address.city = this.address.city;

@@ -17,7 +17,7 @@ export class LoginComponent {
     public hide = true;
     public async login() {
         try {
-            console.log(this.credentials);
+            // console.log(this.credentials);
             await this.authService.login(this.credentials);
             console.log("you are logged in...");
             this.router.navigateByUrl("#");

@@ -18,6 +18,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { RegisterComponent } from './components/auth-area/register/register.component';
 import { HomeComponent } from './components/layout-area/home/home.component';
 import { LogoutComponent } from './components/auth-area/logout/logout.component';
+import { AuthMenuComponent } from './components/auth-area/auth-menu/auth-menu.component';
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -25,7 +26,8 @@ import { LogoutComponent } from './components/auth-area/logout/logout.component'
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    AuthMenuComponent
   ],
   imports: [
     BrowserModule,

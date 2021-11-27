@@ -21,6 +21,7 @@ function userLoginAsync(username, password) {
         password
     }).exec();
     user.token = jwtHelper.getNewToken(user);
+    delete user.password;
     console.log(user);
     return user;
 }

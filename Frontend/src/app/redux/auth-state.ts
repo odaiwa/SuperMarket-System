@@ -43,12 +43,13 @@ export function authReducer(currentState: AuthState = new AuthState(), action: A
         case AuthActionType.UserLoggedIn:
             newState.user = action.payload; // Here action.payload is a UserModel object sent from backend.
             localStorage.setItem("user", JSON.stringify(newState.user));
+            console.log(newState.user)
             break;
         case AuthActionType.UserLoggedOut:
             newState.user = null; // Here we don't have action.payload.
             localStorage.removeItem("user");
             break;
     }
-    console.log(newState);
+    // console.log(newState);
     return newState;
 }

@@ -1,4 +1,14 @@
-.header-div{
-    text-align: center;
-    border: 1px solid black;
+
+
+.nav-bar-custom{
+    background-color: aliceblue;
+}
+.header-app{
+    position: relative;
+    display: inline;
+    left: 0%;
+}
+
+.name{
+    display: inline;
 }
