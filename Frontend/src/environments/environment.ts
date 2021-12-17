@@ -8,7 +8,12 @@ export const environment = {
     itemsUrl : baseUrl+"/items/",
     userUrl : baseUrl + "/users/",
     loginUrl: baseUrl+"/auth/login/",
-    registerUrl : baseUrl+"/auth/register/"
+    registerUrl : baseUrl+"/auth/register/",
+    productsUrl: baseUrl + "products/",
+    categoriesUrl: baseUrl + "categories/",
+    productImagesUrl: baseUrl + "products/images/",
+    cartsUrl: baseUrl + "carts/",
+    ordersUrl: baseUrl + "orders/"
 };
 
 /*

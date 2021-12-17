@@ -1,10 +1,14 @@
 import { combineReducers, createStore } from "redux";
 import { authReducer } from "./auth-state";
+import { itemsReducer } from "./cart-items-state";
+import { cartReducer } from "./cart-state";
+import { productsReducer } from "./products-state";
 
 // import { productsReducer } from "./products-state";
 
 // Create an object containing all the reducers: 
-const reducers = combineReducers({ authState: authReducer });
+
+const reducers = combineReducers({ authState: authReducer, productsState: productsReducer, itemsState: itemsReducer, cartState: cartReducer });
 
 // Create the store object:
 const store = createStore(reducers); // composeWithDevTools() connects our Redux to Redux DevTool chrome extension

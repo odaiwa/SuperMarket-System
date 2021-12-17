@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../services/notify.service';
 import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,16 +13,17 @@ import { CredentialsModel } from 'src/app/models/credentials.model';
 })
 export class LoginComponent {
 
-    constructor(private authService: AuthService, private router:Router) { }
+    constructor(private authService: AuthService, private router:Router, private notify:NotifyService) { }
     public credentials = new CredentialsModel();
     public hide = true;
     public async login() {
         try {
-            // console.log(this.credentials);
+             console.log(this.credentials);
             await this.authService.login(this.credentials);
             console.log("you are logged in...");
             this.router.navigateByUrl("#");
         } catch (err: any) {
+            this.notify.error(err);
             console.log(err.message);
         }
     }

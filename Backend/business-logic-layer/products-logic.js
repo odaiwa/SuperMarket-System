@@ -54,7 +54,6 @@ module.exports = {
     getProductAsync,
     getProductsByCategoryAsync,
     addProductAsync,
-    getAllCategoriesAsync,
     deleteProductAsync,
     updateProductAsync
 }
