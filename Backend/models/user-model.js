@@ -26,6 +26,7 @@ const UserSchema = mongoose.Schema({
         street: String
     },
     isAdmin: Number,
+    token: String
 }, {
     versionKey: false,
 });

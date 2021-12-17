@@ -26,10 +26,14 @@ function deleteProductAsync(_id) {
 
 async function addProductAsync(product, image) {
     if (!image) return null;
+    console.log("image: "+image);
     const imgExtension = image.name.substr(image.name.lastIndexOf("."));
+    console.log("image: "+imgExtension);
     const newImageName = uuid.v4() + imgExtension;
-    product.imageName = newImageName;
-    const fullPath = path.join("./images/", product.imageName);
+    console.log("new image: "+newImageName);
+    product.image = newImageName;
+    const fullPath = path.join("./images/", product.image);
+    console.log("full image path: "+fullPath);
     await image.mv(fullPath);
     return product.save();
 }
@@ -40,7 +44,7 @@ async function updateProductAsync(product, newImage) {
         const extension = newImage.name.substr(newImage.name.lastIndexOf("."));
         const newFileName = uuid.v4() + extension;
         product.imageName = newFileName;
-        fullPath = path.join("./images/", product.imageName);
+        const fullPath = path.join("./images/", product.imageName);
         await newImage.mv(fullPath);
     }
 

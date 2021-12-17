@@ -21,7 +21,7 @@ export class LoginComponent {
              console.log(this.credentials);
             await this.authService.login(this.credentials);
             console.log("you are logged in...");
-            this.router.navigateByUrl("#");
+            this.router.navigateByUrl("/home");
         } catch (err: any) {
             this.notify.error(err);
             console.log(err.message);

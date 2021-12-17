@@ -21,11 +21,11 @@ export class AuthService {
         console.log(addedUser.token);
         store.dispatch(userRegisteredAction(addedUser));
     }
-
-
+    
     public async login(user: CredentialsModel): Promise<void> {
         const loggedInUser = await this.http.post<UserModel>(environment.loginUrl, user).toPromise();
         store.dispatch(userLoggedInAction(loggedInUser));
+        console.log(loggedInUser.token);
     }
 
     public logout(): void {

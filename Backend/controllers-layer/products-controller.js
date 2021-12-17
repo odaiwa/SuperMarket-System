@@ -11,6 +11,7 @@ const router = express.Router();
 router.get("/", async (request, response) => {
     try {
         const products = await productsLogic.getAllProductsAsync();
+        console.log(products);
         response.json(products);
     } catch (err) {
         response.status(500).send(err.message);
@@ -18,7 +19,8 @@ router.get("/", async (request, response) => {
 });
 
 //https:localhost:3001/api/products/_id
-router.get("/:id", verifyLoggedIn, async (request, response) => {
+// router.get("/:id", verifyLoggedIn, async (request, response) => {
+router.get("/:id", async (request, response) => {
     try {
         const id = request.params.id;
         const product = await productsLogic.getProductAsync(id);
@@ -29,7 +31,8 @@ router.get("/:id", verifyLoggedIn, async (request, response) => {
     }
 });
 //https:localhost:3001/api/prod-category/_categoryId
-router.get("/prod-category/:categoryId", verifyLoggedIn, async (request, response) => {
+router.get("/prod-category/:categoryId", async (request, response) => {
+// router.get("/prod-category/:categoryId", verifyLoggedIn, async (request, response) => {
     try {
         const categoryId = request.params.categoryId;
         const products = await productsLogic.getProductsByCategoryAsync(categoryId);
@@ -41,8 +44,10 @@ router.get("/prod-category/:categoryId", verifyLoggedIn, async (request, respons
 //https:localhost:3001/api/products
 router.post("/", async (request, response) => {
     try {
-        console.log(request.body)
-        if (!request.files.img) return response.status(400).send("No Image sent");
+        console.log(request.body);
+        console.log(request.files.image);
+
+        if (!request.files.image) return response.status(400).send("No Image sent");
         
         const product = new ProductModel(request.body);
 
@@ -57,7 +62,8 @@ router.post("/", async (request, response) => {
 });
 
 //https:localhost:3001/api/products/_id
-router.delete("/:id", verifyAdmin, async (request, response) => {
+router.delete("/:id", async (request, response) => {
+// router.delete("/:id", verifyAdmin, async (request, response) => {
     try {
         const id = request.params.id;
         const deletedProduct = await productsLogic.deleteProductAsync(id);
@@ -69,7 +75,8 @@ router.delete("/:id", verifyAdmin, async (request, response) => {
 });
 
 //https:localhost:3001/api/products/_id
-router.patch("/:_id", verifyAdmin, async (request, response) => {
+router.patch("/:_id", async (request, response) => {
+// router.patch("/:_id", verifyAdmin, async (request, response) => {
     try {
         const _id = request.params._id;
         request.body._id = _id;
@@ -91,8 +98,9 @@ router.get("/images/:name", (request, response) => {
     try {
         const name = request.params.name;
         let fullPath = path.join(__dirname, "..", "images", name);
+        console.log(fullPath);
         if (!fs.existsSync(fullPath)) {
-            fullPath = path.join(__dirname, "..", "images", "ImageNotFound.png");
+            fullPath = path.join(__dirname, "..", "images", "not-found.jpg");
         }
         response.sendFile(fullPath);
     }

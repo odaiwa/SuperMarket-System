@@ -1,25 +1,24 @@
 const dal = require("../data-access-layer/dal");
-const uuid = require("uuid");
 const cryptoHelper = require("../helpers/crypto-helper");
 const UserModel = require("../models/user-model");
 const jwtHelper = require("../helpers/jwt-helper");
-const CredentialsModel = require("../models/credentials-model");
 
 
 function registerAsync(user) {
     user.password = cryptoHelper.hash(user.password);
     console.log(user);
-    // user.isAdmin=0;
     delete user.password;
     user.token = jwtHelper.getNewToken(user);
-    return user.save();
+    user.save();
+    return user;
 }
 
-function userLoginAsync(email, password) {
-    //password = cryptoHelper.hash(password);
-    const user = UserModel.findOne({ email, password }).exec();
+async function userLoginAsync(email, password) {
+    let user = await UserModel.findOne({ email, password }).exec();
     if (user.length === 0) return null;
     user.token = jwtHelper.getNewToken(user);
+    // let newToken = jwtHelper.getNewToken(user);
+    console.log("user-login "+user.token);
     return user;
 }
 

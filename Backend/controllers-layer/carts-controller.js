@@ -5,7 +5,7 @@ const verifyLoggedIn = require("../middleware/verify-logged-in");
 
 const router = express.Router();
 
-router.use(verifyLoggedIn);
+// router.use(verifyLoggedIn);
 
 router.get("/", async (request, response) => {
     try {

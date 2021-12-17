@@ -15,7 +15,6 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
     if(store.getState().authState.user) {
       request = request.clone({
           setHeaders: {
@@ -23,7 +22,6 @@ export class AuthInterceptor implements HttpInterceptor {
           }
       });
   }
-
     return next.handle(request);
   }
 }

@@ -1,0 +1,7 @@
+.product-card{
+    width: 15rem;
+    text-align: center;
+    background-color: aliceblue;
+    border-radius: 10%;
+    margin:5px;
+}

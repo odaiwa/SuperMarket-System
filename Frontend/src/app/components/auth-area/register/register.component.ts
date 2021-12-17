@@ -30,8 +30,8 @@ export class RegisterComponent {
         try {
             this.user.address.city = this.address.city;
             this.user.address.street = this.address.street;
-            const user = await this.authService.register(this.user);
-            console.log("you are registered..."+user);
+            await this.authService.register(this.user);
+            console.log("you are registered...");
             // this.router.navigateByUrl("");
         } catch (err) {
             console.log(err);

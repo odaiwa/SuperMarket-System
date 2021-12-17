@@ -19,6 +19,9 @@ import { RegisterComponent } from './components/auth-area/register/register.comp
 import { HomeComponent } from './components/layout-area/home/home.component';
 import { LogoutComponent } from './components/auth-area/logout/logout.component';
 import { AuthMenuComponent } from './components/auth-area/auth-menu/auth-menu.component';
+import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
+import { AddProductComponent } from './components/products-area/add-product/add-product.component';
+import { ProductListComponent } from './components/products-area/products-list/products-list.component';
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -27,7 +30,10 @@ import { AuthMenuComponent } from './components/auth-area/auth-menu/auth-menu.co
     RegisterComponent,
     HomeComponent,
     LogoutComponent,
-    AuthMenuComponent
+    AuthMenuComponent,
+    ProductCardComponent,
+    AddProductComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

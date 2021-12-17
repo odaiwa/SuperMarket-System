@@ -1,0 +1,32 @@
+<div class="product-card">
+    <div>
+        <img class="bd-placeholder-img card-img-top p-2" [src]="imageAddress" />
+        <div *ngIf="!user?.isAdmin">
+            <button *ngIf="!item" type="button"
+                (click)="handleAddToCart()">Add to cart</button>
+            <div *ngIf="item" class="qty mt-1">
+                <span class="minus bg-success" (click)="handleMinus()">-</span>
+                <input type="number" class="count" name="qty" value="item.quantity" [ngModel]="item?.quantity"
+                    (ngModelChange)="item.quantity = $event">
+                <span class="plus bg-success" (click)="handlePlus()">+</span>
+            </div>
+        </div>
+        <div *ngIf="user?.isAdmin">
+            <a routerLink="/products/update/{{product._id}}" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}" (click)="handeEditProduct()" class="btn btn-success"><svg
+                     width="18" height="18" fill="currentColor"
+                    class="bi bi-pencil-square" viewBox="0 0 18 18">
+                </svg>Edit</a>
+        </div>
+    </div>
+    <div>
+        <p>{{ product.name }}</p>
+        <p>
+            <strong>{{ product.price | currency:'ILS' }}
+                <span *ngIf="weight"> / kg</span></strong>
+        </p>
+    </div>
+
+</div>
+
+<!-- routerLink="/products/update/{{product._id}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" -->

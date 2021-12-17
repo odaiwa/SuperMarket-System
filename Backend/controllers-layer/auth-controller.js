@@ -33,6 +33,7 @@ router.post("/login", async (request, response) => {
         if (!loggedInUser) {
             return response.status(401).send("incorrect email or password");
         }
+        console.log("log-in token "+loggedInUser.token);
         response.status(201).json(loggedInUser);
 
     } catch (err) {

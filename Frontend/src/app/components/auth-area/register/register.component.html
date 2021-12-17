@@ -35,7 +35,7 @@
                         <mat-form-field class="email-input" appearance="fill">
                             <mat-label>תעודת זהות:</mat-label>
                             <input matInput placeholder="123456789" type="number" maxlength="9" minlength="6" required
-                                name="userId" [(ngModel)]="user.userId" #userId="ngModel">
+                                name="userId" [(ngModel)]="user._id" #userId="ngModel">
                             <mat-icon mat-icon-button matSuffix><span class="material-icons">
                                     perm_identity
                                 </span>
@@ -54,7 +54,7 @@
                         <mat-form-field class="email-input" appearance="fill">
                             <mat-label>אימייל:</mat-label>
                             <input matInput placeholder="example@example.com" required name="username" email="true"
-                                [(ngModel)]="user.username" type="email" #username="ngModel">
+                                [(ngModel)]="user.email" type="email" #username="ngModel">
                             <mat-icon mat-icon-button matSuffix>email</mat-icon>
                         </mat-form-field>
                     </div>
