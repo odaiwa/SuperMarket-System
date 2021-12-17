@@ -1,6 +1,6 @@
 const express = require("express");
 const logic = require("../business-logic-layer/item-logic");
-const ItemModel = require("../models/item-model");
+const ItemModel = require("../models/items-model");
 const router = express.Router();
 
 
