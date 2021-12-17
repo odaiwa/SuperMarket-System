@@ -8,7 +8,7 @@ const fs = require('fs');
 const router = express.Router();
 
 //https:localhost:3001/api/products
-router.get("/products", async (request, response) => {
+router.get("/", async (request, response) => {
     try {
         const products = await productsLogic.getAllProductsAsync();
         response.json(products);
@@ -16,17 +16,9 @@ router.get("/products", async (request, response) => {
         response.status(500).send(err.message);
     }
 });
-//https:localhost:3001/api/categories
-router.get("/categories", verifyLoggedIn, async (request, response) => {
-    try {
-        const categories = await productsLogic.getAllCategoriesAsync();
-        response.json(categories);
-    } catch (err) {
-        response.status(500).send(err.message);
-    }
-});
+
 //https:localhost:3001/api/products/_id
-router.get("/products/:id", verifyLoggedIn, async (request, response) => {
+router.get("/:id", verifyLoggedIn, async (request, response) => {
     try {
         const id = request.params.id;
         const product = await productsLogic.getProductAsync(id);
@@ -37,7 +29,7 @@ router.get("/products/:id", verifyLoggedIn, async (request, response) => {
     }
 });
 //https:localhost:3001/api/prod-category/_categoryId
-router.get("/products/prod-category/:categoryId", verifyLoggedIn, async (request, response) => {
+router.get("/prod-category/:categoryId", verifyLoggedIn, async (request, response) => {
     try {
         const categoryId = request.params.categoryId;
         const products = await productsLogic.getProductsByCategoryAsync(categoryId);
@@ -47,7 +39,7 @@ router.get("/products/prod-category/:categoryId", verifyLoggedIn, async (request
     }
 });
 //https:localhost:3001/api/products
-router.post("/products", async (request, response) => {
+router.post("/", async (request, response) => {
     try {
         console.log(request.body)
         if (!request.files.img) return response.status(400).send("No Image sent");
@@ -65,7 +57,7 @@ router.post("/products", async (request, response) => {
 });
 
 //https:localhost:3001/api/products/_id
-router.delete("/products/:id", verifyAdmin, async (request, response) => {
+router.delete("/:id", verifyAdmin, async (request, response) => {
     try {
         const id = request.params.id;
         const deletedProduct = await productsLogic.deleteProductAsync(id);
@@ -77,7 +69,7 @@ router.delete("/products/:id", verifyAdmin, async (request, response) => {
 });
 
 //https:localhost:3001/api/products/_id
-router.patch("/products/:_id", verifyAdmin, async (request, response) => {
+router.patch("/:_id", verifyAdmin, async (request, response) => {
     try {
         const _id = request.params._id;
         request.body._id = _id;
@@ -95,7 +87,7 @@ router.patch("/products/:_id", verifyAdmin, async (request, response) => {
 });
 
 //https:localhost:3001/api/products/images/_name
-router.get("/products/images/:name", (request, response) => {
+router.get("/images/:name", (request, response) => {
     try {
         const name = request.params.name;
         let fullPath = path.join(__dirname, "..", "images", name);

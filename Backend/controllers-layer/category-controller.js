@@ -5,7 +5,7 @@ const router = express.Router();
 
 //get all category
 //http://localhost:3001/api/category
-router.get("", async (request, response) => {
+router.get("/", async (request, response) => {
     try {
         console.log("getting all categories...");
         const users = await categoryLogic.getAllCategories();
@@ -19,7 +19,7 @@ router.get("", async (request, response) => {
 
 //add category to DB
 //http://localhost:3001/api/category
-router.post("", async (request, response) => {
+router.post("/", async (request, response) => {
     try {
         const category = new CategoryModel(request.body);
         const addedCategory = await categoryLogic.addCategory(category);

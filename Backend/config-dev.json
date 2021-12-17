@@ -2,6 +2,5 @@
     "mongodb": {
         "connectionString": "mongodb://localhost:27017/walmart"
     },
-    "jwtKey": "5AlTF0rPas2w0Rd"
-
+    "jwtKey": "jWtKeyWalmart"
 }

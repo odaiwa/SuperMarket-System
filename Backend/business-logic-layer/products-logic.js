@@ -7,10 +7,6 @@ function getAllProductsAsync() {
     return ProductModel.find().populate("category").exec();
 }
 
-function getAllCategoriesAsync() {
-    return CategoryModel.find().exec();
-}
-
 function getProductsByCategoryAsync(categoryId) {
     return ProductModel.find({
         categoryId
