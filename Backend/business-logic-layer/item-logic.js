@@ -5,7 +5,7 @@ function getAllItems(){
     return ItemModel.find().populate("category").exec();
 }
 
-function getIteById(_id) {
+function getItemById(_id) {
     return ItemModel.findById(_id).exec();
 }
 
@@ -18,5 +18,5 @@ function addItem(item) {
 module.exports={
     addItem,
     getAllItems,
-    getIteById
+    getItemById
 }

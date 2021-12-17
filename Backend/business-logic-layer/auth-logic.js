@@ -26,8 +26,13 @@ function userLoginAsync(username, password) {
     return user;
 }
 
+function validateUserIdAsync(userId) {
+    const user = UserModel.find({ userId }).exec();
+    return !user ? true:false;
+} 
 
 module.exports = {
     registerAsync,
-    userLoginAsync
+    userLoginAsync,
+    validateUserIdAsync
 }

@@ -11,8 +11,8 @@ const router = express.Router();
 router.post("/register", async (request, response) => {
     try {
         const user = new UserModel(request.body);
-         user.isAdmin = 0;
-        
+        user.isAdmin = 0;
+
         // user.password = cryptoHelper.hash(password);
         const addedUser = await authLogic.registerAsync(user);
         response.status(201).json(addedUser);
@@ -23,10 +23,12 @@ router.post("/register", async (request, response) => {
 
 router.post("/login", async (request, response) => {
     try {
+        
         let {
             username,
             password
         } = request.body;
+
         password = cryptoHelper.hash(password);
         const loggedInUser = await authLogic.userLoginAsync(username, password);
         if (!loggedInUser) {

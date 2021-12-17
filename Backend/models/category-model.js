@@ -1,11 +1,17 @@
 const mongoose = require("mongoose");
 
 const CategorySchema = mongoose.Schema({
-    categoryName:String
+    categoryName: String
 }, {
     versionKey: false
 });
 
-const CategoryModel = mongoose.model("CategoryModel", CategorySchema, "category");
+CategorySchema.virtual("products", {
+    ref: "ProductModel",
+    localField: "_id",
+    foreignField: "categoryId"
+});
+
+const CategoryModel = mongoose.model("CategoryModel", CategorySchema, "categories");
 
 module.exports = CategoryModel;
