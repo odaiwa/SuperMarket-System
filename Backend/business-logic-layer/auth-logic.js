@@ -15,14 +15,11 @@ function registerAsync(user) {
     return user.save();
 }
 
-function userLoginAsync(username, password) {
-    const user = UserModel.find({
-        username,
-        password
-    }).exec();
+function userLoginAsync(email, password) {
+    //password = cryptoHelper.hash(password);
+    const user = UserModel.findOne({ email, password }).exec();
+    if (user.length === 0) return null;
     user.token = jwtHelper.getNewToken(user);
-    delete user.password;
-    console.log(user);
     return user;
 }
 

@@ -1,4 +1,4 @@
-const ItemModel = require("../models/item-model");
+const ItemModel = require("../models/items-model");
 const CategoryModel = require("../models/category-model");
 
 function getAllItems(){

@@ -7,7 +7,7 @@ const router = express.Router();
 //http://localhost:3001/api/category
 router.get("", async (request, response) => {
     try {
-        console.log("getting all users...");
+        console.log("getting all categories...");
         const users = await categoryLogic.getAllCategories();
         console.log("users has been sent...");
         response.json(users);
