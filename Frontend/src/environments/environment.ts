@@ -1,20 +1,20 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const baseUrl = "http://localhost:3001/api";
+const baseUrl = "http://localhost:3001/api/";
 
 export const environment = {
-    production: false,
-    itemsUrl : baseUrl+"/items/",
-    userUrl : baseUrl + "/users/",
-    loginUrl: baseUrl+"/auth/login/",
-    registerUrl : baseUrl+"/auth/register/",
-    productsUrl: baseUrl + "/products/",
-    categoriesUrl: baseUrl + "/category/",
-    productImagesUrl: baseUrl + "/products/images/",
-    cartsUrl: baseUrl + "/carts/",
-    ordersUrl: baseUrl + "/orders/"
+  production: false,
+  productsUrl: baseUrl + "products/",
+  categoriesUrl: baseUrl + "categories/",
+  productImagesUrl: baseUrl + "products/images/",
+  cartsUrl: baseUrl + "carts/",
+  itemsUrl: baseUrl + "items/",
+  ordersUrl: baseUrl + "orders/",
+  registerUrl: baseUrl + "auth/register",
+  loginUrl: baseUrl + "auth/login"
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

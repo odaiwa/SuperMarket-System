@@ -27,7 +27,7 @@ export class ProductCardComponent implements OnInit {
     public item : ItemModel = null;
     private unsubscribeMe: Unsubscribe;
     public weight: Boolean = false;
-    constructor(private myCartService: CartService, private notify: NotifyService) { }
+    constructor(private cartService: CartService, private notify: NotifyService) { }
     
     async ngOnInit() {
         try {
@@ -54,23 +54,23 @@ export class ProductCardComponent implements OnInit {
         this.item.totalPrice = this.product.price * this.item.quantity;
         this.item.cartId = this.cart._id;
         this.item.productId = this.product._id;
-        this.item = await this.myCartService.addItemToCartAsync(this.item);
+        this.item = await this.cartService.addItemToCartAsync(this.item);
     }
 
     public async handlePlus() {
         this.item.quantity = this.item.quantity + 1;
         this.item.totalPrice = this.product.price * this.item.quantity;
-        await this.myCartService.updateItemAsync(this.item);
+        await this.cartService.updateItemAsync(this.item);
     }
 
     public async handleMinus() {
         this.item.quantity = this.item.quantity - 1;
         if (this.item.quantity <= 0) {
-            await this.myCartService.deleteItemAsync(this.item._id);
+            await this.cartService.deleteItemAsync(this.item._id);
             return;
         }
         this.item.totalPrice = this.item.product.price * this.item.quantity;
-        await this.myCartService.updateItemAsync(this.item);
+        await this.cartService.updateItemAsync(this.item);
     }
 
     public handeEditProduct(){

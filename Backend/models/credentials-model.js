@@ -3,15 +3,14 @@ const mongoose = require("mongoose");
 const CredentialsSchema = mongoose.Schema({
     email: {
         type: String,
-        required: true
+        required: [true, "Email required"]
     },
-    password: {
+    password:{
         type: String,
-        required: true
-    },
-}, {
-    versionKey: false,
-});
+        required: [true, "Password required"],
+        
+    }
+}, { versionKey: false });
 
 const CredentialsModel = mongoose.model("CredentialsModel", CredentialsSchema, "credentials");
 

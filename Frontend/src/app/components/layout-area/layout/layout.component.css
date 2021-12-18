@@ -1,12 +1,16 @@
-p{
-    text-align: center;
+
+div {
+    height: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+    grid-template-columns: repeat(6, 1fr);
 }
 
-layout-div{
-    text-align: center;
-    
+
+header, footer {
+    grid-column: span 6;
 }
-img{
-    margin-right:100px;
-    width:30%;
+main {
+    grid-column: span 5;
 }

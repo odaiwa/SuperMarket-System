@@ -1,11 +1,13 @@
-//handle errors:
-function getError(err) {
-    if(config.isProduction) {
-        return "Some error occurred, please try again later.";
+function internalServerError(response, err) {
+
+    if(global.config.isDevelopment) {
+        response.status(500).send(err.message);
+        return;
     }
-    return err.message;
+
+    response.status(500).send("Some error, please try again.");
 }
 
 module.exports = {
-    getError
+    internalServerError
 };

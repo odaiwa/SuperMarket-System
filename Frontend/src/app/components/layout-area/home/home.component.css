@@ -1,0 +1,12 @@
+.home-screen-welcoming{
+    margin: 20px 20px;
+    background-color: rgba(192, 192, 192, 0.4);
+    width: 350px;
+    border: 1px solid rgb(47,79,79);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.main-con{
+    height: 80vh;
+}

@@ -1,6 +1,41 @@
-.container-prods{
-    margin-top:10px;
-    margin-right:10px;
-    display: flex;
-    flex-direction: row
+.container-prods {
+  margin-top: 10px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row
+}
+
+
+.search {
+  width: 100%;
+}
+
+.search>input {
+  /* width: 90%; */
+  display: inline;
+  height: 40px;
+  width: 100%;
+  padding: 4px;
+  text-overflow: ellipsis;
+  display: inline-block;
+  color: #20455e;
+  font-size: 14px;
+  outline: 0;
+  transition: border 0.1s ease;
+  resize: none;
+  border: none;
+  margin-top: 5px;
+}
+
+
+
+nav{
+    margin-top: 5px;
+    text-align: center;
+}
+
+nav>button{
+    margin:0 2px;
+    height: 35px;
+    border-radius: 5%;
 }

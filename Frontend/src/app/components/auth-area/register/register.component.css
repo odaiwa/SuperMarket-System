@@ -1,7 +1,7 @@
 .login-form>form {
   border: 1px solid gray;
   width: 350px;
-  min-height: 800px;
+  min-height: 300px;
   max-height: 900px;
   padding: 20px;
   text-align: center;

@@ -32,7 +32,7 @@ export class RegisterComponent {
             this.user.address.street = this.address.street;
             await this.authService.register(this.user);
             console.log("you are registered...");
-            // this.router.navigateByUrl("");
+            this.router.navigateByUrl("/home");
         } catch (err) {
             console.log(err);
         }

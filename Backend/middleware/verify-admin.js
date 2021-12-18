@@ -15,6 +15,7 @@ function verifyIsAdmin(request, response, next) {
         if (err)
             return response.status(401).send("You are not logged in!");
 
+        // check also that the user is Admin (we need additional database column: isAdmin):
         if (!payload.payload.isAdmin) return response.status(403).send("You are not authorized.");
 
         next();

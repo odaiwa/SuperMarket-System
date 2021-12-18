@@ -22,6 +22,12 @@ import { AuthMenuComponent } from './components/auth-area/auth-menu/auth-menu.co
 import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
 import { ProductListComponent } from './components/products-area/products-list/products-list.component';
+import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
+import { UpdateProductComponent } from './components/products-area/update-product/update-product.component';
+import { CartItemsComponent } from './components/cart-area/cart-items/cart-items.component';
+import { CartShopComponent } from './components/cart-area/cart-shop/cart-shop.component';
+import { OrderCartComponent } from './components/cart-area/order-cart/order-cart.component';
+import { FooterComponent } from './components/layout-area/footer/footer.component';
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -33,7 +39,13 @@ import { ProductListComponent } from './components/products-area/products-list/p
     AuthMenuComponent,
     ProductCardComponent,
     AddProductComponent,
-    ProductListComponent
+    ProductListComponent,
+    PageNotFoundComponent,
+    UpdateProductComponent,
+    CartItemsComponent,
+    CartShopComponent,
+    OrderCartComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

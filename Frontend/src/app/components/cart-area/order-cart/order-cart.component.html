@@ -1,0 +1,103 @@
+<div class="order">
+    <div class="order-table">
+        <div class="header">
+            <h4>Your shopping cart</h4>
+            <form class="form-inline my-2 my-lg-0">
+                <input id="search" class="form-control mr-1-sm-4" type="search" (input)="searchProducts($event)"
+                    placeholder="Search items in your cart" aria-label="Search">
+            </form>
+        </div>
+        <br>
+        <div id="content" #content>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Quantity</th>
+                        <th></th>
+                        <th>Product name</th>
+                        <th>Unit price</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <h3 *ngIf="items.length === 0">There are no items to show</h3>
+                    <tr *ngFor="let i of items" class="trbody">
+                        <td><button type="button" class="mybuttonoverlap btn btn-danger" value={{i._id}}
+                                (click)="deleteItem(i._id)">x</button></td>
+                        <td>{{i.quantity}}</td>
+                        <td> <img src='http://localhost:3001/api/products/images/{{i.product.imageName}}' width="40"
+                                height="40" alt={{i.product._id}}></td>
+                        <td> {{i.product.name}}</td>
+                        <td><strong>{{i.product.price | currency:'ILS'}}</strong></td>
+                        <td><strong>{{i.totalPrice | currency:'ILS'}}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="divCheckout">
+        <form (submit)="addOrder()" #formInfo="ngForm">
+            <h5>Shipping Details</h5>
+            <div class="form-group">
+
+                <label for="city">City</label>
+                <input class="form-control" id="city" type="text" name="city" [(ngModel)]="order.city" required
+                    #cityInfo="ngModel" minlength="2" maxlength="50">
+            </div>
+
+            <span *ngIf="cityInfo.errors?.required && cityInfo.touched">Please enter city</span>
+            <span *ngIf="cityInfo.errors?.minlength && cityInfo.touched">city should be at least 2
+                letters</span>
+            <span *ngIf="cityInfo.errors?.maxlength && cityInfo.touched">city should be at most 50
+                letters</span>
+
+            <div class="form-group">
+
+                <label for="street">street</label>
+                <input class="form-control" id="street" #streetBox="ngModel" type="text" name="street"
+                    [(ngModel)]="order.street" #streetInfo="ngModel" required minlength="2" maxlength="50">
+            </div>
+            <span *ngIf="streetInfo.errors?.required && streetInfo.touched">Please enter street</span>
+            <span *ngIf="streetInfo.errors?.minlength && streetInfo.touched">street should be at least 2
+                letters</span>
+            <span *ngIf="streetInfo.errors?.maxlength && streetInfo.touched">street should be at most 50
+                letters</span>
+
+            <div class="form-group">
+
+                <label>Delivery Date</label>
+                <input class="form-control" type="date" name="date" [(ngModel)]="order.deliveryDate"
+                    #deliveryDateInfo="ngModel" required min={{today}}>
+            </div>
+            <span *ngIf="deliveryDateInfo.errors?.required && deliveryDateInfo.touched">Please enter delivery
+                date</span>
+            <span id="alert"></span>
+
+            <h5>Payment Details</h5>
+            <div class="form-group">
+
+                <label>Credit card</label>
+                <input class="form-control" type="text" name="creditCard" [(ngModel)]="order.creditCard"
+                    #creditCardInfo="ngModel" pattern="^(?=.*[0-9]).{4}$" required>
+            </div>
+            <span *ngIf="creditCardInfo.errors?.required && creditCardInfo.touched">Please enter credit card</span>
+            <span *ngIf="creditCardInfo.errors?.pattern && creditCardInfo.touched">Credit number should be 4 numbers</span>
+        </form>
+        <img src="../../../../assets/images/payment-bg.jpg" alt="">
+    </div>
+
+    <div class="footer">
+        <div class="back">
+           <a routerLink="/products-list"><button>Continue Shopping</button></a>
+        </div>
+        <div class="proceed">
+            <p>Estimated Total: </p>
+            <strong><small>({{items.length}} Items)</small>{{orderPrice | currency:"ILS"}}</strong>
+            <button class="btn btn-danger" [disabled]="formInfo.form.invalid" (click)="addOrder()">Checkout</button>
+        </div>
+
+    </div>
+
+</div>

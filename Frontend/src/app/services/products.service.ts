@@ -34,7 +34,7 @@ export class ProductsService {
     }
 
     public async getProductsByCategoryAsync(categoryId: string): Promise<ProductModel[]> {
-        const products = await this.http.get<ProductModel[]>(environment.productsUrl + "products-per-category/" + categoryId).toPromise();
+        const products = await this.http.get<ProductModel[]>(environment.productsUrl + "category-products/" + categoryId).toPromise();
         return products;
     }
 

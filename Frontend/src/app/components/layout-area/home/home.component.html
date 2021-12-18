@@ -1,1 +1,15 @@
-<p>home works!</p>
+<div class="main-con">
+    <div class="home-screen-welcoming">
+        
+        <div *ngIf="!user">
+            <h3>הזמנו מאצלנו עכשיו!</h3>
+            <h4>  הצטרפו עכשיו</h4>
+            <app-login></app-login>
+        </div> 
+        <div *ngIf="user">
+            שלום {{user.firstName}} {{user.lastName}}
+            <br>
+            <a routerLink="/products-list">התחל קניה</a>
+        </div>
+    </div>
+</div>
