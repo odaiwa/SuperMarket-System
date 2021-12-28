@@ -1,11 +1,11 @@
-import { UserModel } from "../models/user.model";
+import { UserModel } from './../models/user.model';
 
 // Auth State: 
 export class AuthState {
     public user: UserModel = null;
     public constructor() {
         const user = JSON.parse(localStorage.getItem("user"));
-        if(user) {
+        if (user) {
             this.user = user;
         }
     }
@@ -38,18 +38,16 @@ export function userLoggedOutAction(): AuthAction {
 // Auth Reducer: 
 export function authReducer(currentState: AuthState = new AuthState(), action: AuthAction): AuthState {
     const newState = { ...currentState };
-    switch(action.type) {
-        case AuthActionType.UserRegistered: 
+    switch (action.type) {
+        case AuthActionType.UserRegistered:
         case AuthActionType.UserLoggedIn:
             newState.user = action.payload; // Here action.payload is a UserModel object sent from backend.
             localStorage.setItem("user", JSON.stringify(newState.user));
-            console.log(newState.user.token)
             break;
         case AuthActionType.UserLoggedOut:
             newState.user = null; // Here we don't have action.payload.
             localStorage.removeItem("user");
             break;
     }
-    // console.log(newState);
     return newState;
 }

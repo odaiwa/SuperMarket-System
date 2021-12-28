@@ -34,14 +34,12 @@ export function productsReducer(currentState: ProductsState = new ProductsState(
             newState.products.push(action.payload); // Here action.payload MUST be the added product!
             break;
         case ProductsActionType.ProductUpdated:
-            const indexToUpdate = newState.products.findIndex(p => p._id === action.payload.id); // id to be updated
+            const indexToUpdate = newState.products.findIndex(p => p._id === action.payload.id); // Here action.payload MUST be the updated product!
             newState.products[indexToUpdate] = action.payload;
-            // Here action.payload MUST be the updated product!
             break;
         case ProductsActionType.ProductDeleted:
-            const indexToDeleted = newState.products.findIndex(p => p._id === action.payload); // id to be deleted
-            newState.products.splice(indexToDeleted, 1);
-            // Here action.payload MUST be the product id to delete!
+            const indexToDelete = newState.products.findIndex(p => p._id === action.payload); // Here action.payload MUST be the id to delete!
+            newState.products.splice(indexToDelete, 1);
             break;
     }
 

@@ -4,18 +4,18 @@ const ProductSchema = mongoose.Schema({
 
     categoryId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: [true, "category ID required"],
+        required: true, 
     },
 
     name: {
         type: String,
-        required: [true, "Product name required"]
+        required: true, 
     },
 
     price: {
         type: Number,
-        required: [true, "Product price required"],
-        min: [0, 'Minimum price is zero']
+        required: true,
+        min: 0
     },
  
     imageName: String

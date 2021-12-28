@@ -1,32 +1,40 @@
-<div class="box">
-    <h2>New product</h2>
-    <p>Required fields are marked with *</p>
+<div class="login-container">
+    <div class="login-form">
+        <form (submit)="add()" #formInfo="ngForm" id="myForm">
+            <div class="inputs-container">
+                <h2>הוסף מוצר</h2>
 
-    <form (submit)="add()" #formInfo="ngForm" id="myForm" > 
+                <label>שם קטיגוריה</label>
+                <select name="categoryId" [(ngModel)]="product.categoryId" #categoryInfo="ngModel" required>
+                    <option *ngFor="let c of categories" value={{c._id}}>{{c.name}}</option>
+                </select>
+                <span *ngIf="categoryInfo.errors?.required && categoryInfo.touched">Missing Category name</span>
 
-        <label>Category Name*</label>
-        <select class="form-select" name="categoryId" [(ngModel)]="product.categoryId" #categoryInfo="ngModel" required >
-            <option *ngFor="let c of categories" value={{c._id}}>{{c.categoryName}}</option>
-        </select>
-        <span *ngIf="categoryInfo.errors?.required && categoryInfo.touched">Missing Category name</span>
+                <div>
+                    <mat-form-field class="email-input" appearance="fill">
+                        <mat-label>שם המוצר:</mat-label>
+                        <input matInput placeholder="קולה" required [(ngModel)]="product.name"
+                            name="email">
+                    </mat-form-field>
+                </div>
 
-        <label>Name*</label>
-        <input type="text" name="name" class="form-control" [(ngModel)]="product.name" required pattern="^[A-Z].*$" #nameInfo="ngModel" minlength="2" maxlength="50">
-        <span *ngIf="nameInfo.errors?.required && nameInfo.touched">Missing name</span>
-        <span *ngIf="nameInfo.errors?.pattern && nameInfo.touched">Name must be capitalized</span>
-
-        <label>Price*</label>
-        <input type="number" step="0.01" class="form-control" name="price" [(ngModel)]="product.price" required min="0" #priceInfo="ngModel">
-        <span *ngIf="priceInfo.errors?.required && priceInfo.touched">Missing price</span>
-        <span *ngIf="priceInfo.errors?.min && priceInfo.touched">please enter positive price</span>
+                <div>
+                    <mat-form-field class="email-input" appearance="fill">
+                        <mat-label>מחיר:</mat-label>
+                        <input matInput required type="number" [(ngModel)]="product.price" name="price">
+                    </mat-form-field>
+                </div>
 
 
-        <label>Image*</label>
-        <input  class="form-control" type="file" accept="image/*" name="image"  [(ngModel)]="product.imageName" required #imageInfo="ngModel" (change)="setImage($event);">
-        <span *ngIf="imageInfo.invalid && imageInfo.touched">Missing image</span>
+                <label>תמונה</label>
+                <input type="file" accept="image/*" name="image" [(ngModel)]="product.imageName"
+                    required #imageInfo="ngModel" (change)="setImage($event); changeOccurred()">
+                <span *ngIf="imageInfo.invalid && imageInfo.touched">חסר תמונה </span>
 
-        <button class="btn btn-outline-success"[disabled]="formInfo.form.invalid">Add</button>
+                <button [disabled]="formInfo.form.invalid" mat-raised-button color="primary">הוסף</button>
+            </div>
 
-    </form>
+        </form>
 
+    </div>
 </div>

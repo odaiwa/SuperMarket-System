@@ -1,9 +1,7 @@
-const jwt = require("jsonwebtoken"); 
+const jwt = require("jsonwebtoken");
 
-// JSON web token:
-
-function getNewToken(payload) { 
-    return jwt.sign({ payload }, config.jwtKey, { expiresIn: "2h" });
+function getNewToken(payload) {
+    return jwt.sign({ payload }, global.config.jwtKey, { expiresIn: "24h" });
 }
 
 module.exports = {

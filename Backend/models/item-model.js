@@ -4,22 +4,22 @@ const ItemSchema = mongoose.Schema({
 
     productId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: [true, "product ID required"],
+        required: true,
     },
 
     quantity: {
         type: Number,
-        required: [true, "quantity required"],
+        required: true,
     },
 
     totalPrice: {
         type: Number,
-        required: [true, "total price required"],
+        required: true,
     },
 
     cartId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: [true, "cart ID required"],
+        required: true, 
     },
 
  

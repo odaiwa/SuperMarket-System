@@ -2,8 +2,12 @@ a{
     display: block;
 }
 
+button{
+    display: block;
+    margin:0 auto;
+}
 
 .page-not-found{
+    margin-top:40px;
     text-align: center;
-
 }

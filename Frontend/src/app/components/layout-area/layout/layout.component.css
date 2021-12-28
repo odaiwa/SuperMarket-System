@@ -1,16 +1,11 @@
-
 div {
     height: 100%;
     box-sizing: border-box;
     display: grid;
-    grid-template-rows: 10% 80% 10%;
+    grid-template-rows: 10% 90%;
     grid-template-columns: repeat(6, 1fr);
 }
 
-
-header, footer {
+header,main {
     grid-column: span 6;
-}
-main {
-    grid-column: span 5;
 }

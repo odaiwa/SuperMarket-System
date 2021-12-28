@@ -14,7 +14,6 @@ function verifyLoggedIn(request, response, next) {
 
     }
 
-
     jwt.verify(token, global.config.jwtKey, (err, payload) => {
         if (err && err.message === "jwt expired") {
             return response.status(403).send("Your login session has expired.");

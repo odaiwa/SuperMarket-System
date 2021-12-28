@@ -1,0 +1,34 @@
+<div class="whole-page">
+    <div class="products item">
+        <div>
+            <div>
+                <mat-form-field class="email-input" appearance="fill">
+                    <mat-label>חפש מוצר:</mat-label>
+                    <input matInput (input)="searchProducts($event)"
+                        name="email">
+                </mat-form-field>
+            </div>
+            <div class="categories">
+                <button (click)="allProducts()" mat-raised-button color="primary">כל המוצרים</button>
+                <button value={{c._id}} *ngFor="let c of categories" (click)="showProducts($event)"  mat-raised-button color="primary">{{c.name}}</button>
+            </div>
+        </div>
+
+        <div class="show-products" *ngIf="product !== undefined && products.length !== 0">
+            <div *ngFor="let p of products">
+                <app-product-card [product]="p" [user]="user" [cart]="cart"></app-product-card>
+            </div>
+        </div>
+        <div  *ngIf="product !== undefined && products.length === 0">
+            <img src="../../../../assets/images/b045af8a94343e3b1fdbf1576e9818b8.gif" alt="">
+        </div>
+    </div>
+    <div class="aside item">
+        <div *ngIf="!user?.isAdmin" >
+            <app-shopping-cart></app-shopping-cart>
+        </div>
+        <div *ngIf="user?.isAdmin" >
+            <app-add-product></app-add-product>
+        </div>
+    </div>
+</div>

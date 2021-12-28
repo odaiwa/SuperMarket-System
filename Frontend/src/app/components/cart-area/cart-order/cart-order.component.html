@@ -1,0 +1,74 @@
+<div class="whole-page" *ngIf="items.length !== 0">
+    <div class="table-content">
+        <div class="search-div">
+            <h4>סל הקניות שלך</h4>
+            <input id="search" type="search" (input)="searchProducts($event)" placeholder="חפש מוצר בסל הקניות">
+        </div>
+        <br>
+        <div id="content">
+            <h3 *ngIf="delivery !== undefined">קבלה וולמרת</h3>
+            <table id="table">
+                <tr>
+                    <th>כמות</th>
+                    <th>שם מוצר</th>
+                    <th>מחיר ליחדה</th>
+                    <th>מחיר</th>
+                    <th>מחק</th>
+                </tr>
+                <tbody>
+                    <tr *ngFor="let i of items" class="trbody">
+                        <td>{{i.quantity}}</td>
+                        <td> {{i.product.name}}</td>
+                        <td>{{i.product.price | currency:'ILS'}}</td>
+                        <td>{{i.totalPrice | currency:'ILS'}}</td>
+                        <td class="delete-element" (click)="deleteItem(i._id)">x</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="total-payment"> <strong> מחיר לתשלום {{orderPrice | currency:"ILS"}}</strong></p>
+            <p class="total-payment"> <strong> תאריך קניה {{today}}</strong></p>
+            <p class="total-payment" *ngIf="delivery !== undefined"> <strong> תאריך קניה {{delivery}}</strong></p>
+            <p class="total-payment" *ngIf="city !== undefined && street !== undefined"> <strong>  כתובת אספקה {{city}} {{ street}}</strong></p>
+        </div>
+    </div>
+
+    <div class="delivery-details" >
+        <form (submit)="addOrder()" #formInfo="ngForm">
+            <h5>פרטי משלוח</h5>
+            <div class="inputs-container">
+                <div>
+                    <mat-form-field class="city-input" appearance="fill">
+                        <mat-label>עיר:</mat-label>
+                        <input matInput placeholder="example@example.com" required [(ngModel)]="order.city" (ngModelChange)="cityAddress($event)"
+                            name="email">
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="street-input" appearance="fill">
+                        <mat-label>רחוב:</mat-label>
+                        <input matInput required [(ngModel)]="order.street" name="text" (ngModelChange)="streetAddress($event)">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="date-input" appearance="fill">
+                        <mat-label>תאריך אספקה:</mat-label>
+                        <input matInput required [(ngModel)]="order.deliveryDate" name="date" type="date" required (ngModelChange)="deliveryDate($event)"
+                            min={{today}}>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="date-input" appearance="fill">
+                        <mat-label>מספר כרטיס אשראי:</mat-label>
+                        <input matInput required [(ngModel)]="order.creditCard" name="date" type="number" >
+                    </mat-form-field>
+                </div>
+            </div>
+            <button mat-raised-button color="primary">שלם</button>
+        </form>
+    </div>
+</div>
+<div class="back">
+    <a routerLink="/products"><button mat-raised-button color="primary" class="back-to-products">המשך לקניה</button></a>
+</div>

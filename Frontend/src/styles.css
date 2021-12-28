@@ -1,5 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    text-align: center;
+    background-image: linear-gradient(white);
+}
+
+a {
+    color: blue;
+}
+
+.box {
+    display: inline-block;
+    text-align: center;
+    border: 1px solid black;
+    padding: 0 10px;
+    margin: 10px;
+    border-radius: 3px;
+    box-shadow: 5px 5px 10px;
+}
 body {
 	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab) center center/cover no-repeat;
 	background-size: 400% 400%;

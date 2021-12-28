@@ -18,7 +18,6 @@ export interface CartAction {
 export function cartAddedAction(cart: CartModel): CartAction {
     return { type: CartActionType.CartAdded, payload: cart };
 }
-
 export function cartDownloadedAction(cart: CartModel): CartAction {
     return { type: CartActionType.CartDownloaded, payload: cart };
 }
@@ -31,6 +30,7 @@ export function cartReducer(currentState: CartState = new CartState(), action: C
 
     const newState = { ...currentState };
 
+
     switch (action.type) {
         case CartActionType.CartDownloaded:
         case CartActionType.CartAdded:
@@ -40,5 +40,6 @@ export function cartReducer(currentState: CartState = new CartState(), action: C
             newState.cart.isPaid = true;
             break;
     }
+
     return newState;
 }

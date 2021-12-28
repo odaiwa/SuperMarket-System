@@ -1,0 +1,32 @@
+.categories{
+    margin: 5px 0;
+}
+.categories >button{
+    margin : 0 2px;
+}
+
+.whole-page{
+    margin-top:50px;
+    display: grid;
+    grid-template-rows:  70% 30%;
+    grid-template-columns: repeat(6, 1fr);
+    margin-bottom: 40px;
+}
+
+.products{
+    margin-right:10px;
+    grid-column: span 4;
+}
+.aside{
+    width:100px;
+    grid-column: span 2;
+    left:0;
+}
+.show-products{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    /* width: 600px; */
+}

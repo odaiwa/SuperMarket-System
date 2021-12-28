@@ -113,8 +113,8 @@
             <div class="new-account">
                 <p>יש לך חשבון? <a routerLink="/login">התחבר למערכת</a></p>
             </div>
-            <button mat-raised-button color="primary" *ngIf="step > 1" (click)="previsePage()" >אחורה</button>
-            <button mat-raised-button color="primary" *ngIf="step < 3" (click)="nextpage()">המשך</button>
+            <button mat-raised-button color="primary" type="button" *ngIf="step > 1" (click)="previsePage()" >אחורה</button>
+            <button mat-raised-button color="primary" type="button" *ngIf="step < 3" (click)="nextpage()">המשך</button>
         </form>
 
     </div>

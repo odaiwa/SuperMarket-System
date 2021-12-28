@@ -1,15 +1,16 @@
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  margin: auto 0;
-  background-color: rgb(65,105,225);
-  color: white;
-  height: 34px;
-}
-
-.footer>p {
-  font-size: large;
-}
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin: auto 0;
+    background-color: rgb(65,105,225);
+    color: white;
+    height: 34px;
+  }
+  
+  .footer>p {
+    font-size: large;
+  }
+  

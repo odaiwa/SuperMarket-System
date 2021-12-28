@@ -1,15 +1,32 @@
 <div class="main-con">
     <div class="home-screen-welcoming">
-        
-        <div *ngIf="!user">
-            <h3>הזמנו מאצלנו עכשיו!</h3>
-            <h4>  הצטרפו עכשיו</h4>
-            <app-login></app-login>
-        </div> 
-        <div *ngIf="user">
-            שלום {{user.firstName}} {{user.lastName}}
-            <br>
-            <a routerLink="/products-list">התחל קניה</a>
+        <div class="parallax-content">
+            <div *ngIf="!user">
+                <h3>הזמנו מאצלנו עכשיו!</h3>
+                <h4>  הצטרפו עכשיו</h4>
+                <app-login></app-login>
+            </div> 
+            <div *ngIf="user">
+                <h3>שלום {{user.firstName}} {{user.lastName}}</h3>
+
+                <div *ngIf="!cart?.isPaid && cart">
+                    <h5>יש לך סל פתוח מתאריך {{cart.date?.toString().split('T')[0]}}</h5>
+                    <button mat-raised-button color="primary" (click)="handleResumeShopping()">המשך בקניה</button>
+                </div>
+
+                <h5 *ngIf="latestOrder && cart?.isPaid">תאריך קנה אחרונה
+                    {{latestOrder.initDate.toString().split('T')[0]}}
+                </h5>
+
+                <h5 *ngIf="!cart?.isPaid && !latestOrder && !cart">שלום לרשת וולמרת</h5>
+
+                <button *ngIf="cart?.isPaid || !cart" (click)="addCart()">Start
+                    Shopping</button>
+
+            </div>
+        </div>
+        <div class="info">
+            <p>מספר מוצרים ברשת: <b>{{products?.length}}</b></p>
         </div>
     </div>
 </div>

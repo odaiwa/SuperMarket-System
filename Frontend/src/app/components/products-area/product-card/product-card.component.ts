@@ -15,6 +15,12 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
+    
+    constructor(private cartService: CartService, private notify: NotifyService) { }
+    public imageAddress: string;
+    public item : ItemModel = null;
+    private unsubscribeMe: Unsubscribe;
+    public weight: Boolean = false;
     @Input()
     public product: ProductModel;
     @Input()
@@ -23,25 +29,16 @@ export class ProductCardComponent implements OnInit {
     public cart: CartModel;
     @Input()
     public cartItems: ItemModel[];
-    public imageAddress: string;
-    public item : ItemModel = null;
-    private unsubscribeMe: Unsubscribe;
-    public weight: Boolean = false;
-    constructor(private cartService: CartService, private notify: NotifyService) { }
     
     async ngOnInit() {
         try {
-            // this.unsubscribeMe = store.subscribe(async () => {
-            //     this.cartItems = store.getState().itemsState.items;
-            //     this.item = store.getState().itemsState.items.find(i => i.product._id === this.product._id);
-            // });
-            this.item = store.getState().itemsState.items.find(i => i.product._id === this.product._id);
-            console.log(this.product.imageName);
-            this.imageAddress = environment.productImagesUrl + this.product.image;  
-            // if(this.product.category?.name === "Fresh Produce"){
-            //     this.weight = true;
-            // }
+            this.unsubscribeMe = store.subscribe(async () => {
+                this.cartItems = store.getState().itemsState.items;
+                this.item = store.getState().itemsState.items.find(i => i.product._id === this.product._id);
+            });
 
+            this.item = store.getState().itemsState.items.find(i => i.product._id === this.product._id);
+            this.imageAddress = environment.productImagesUrl + this.product.imageName;
         } catch (err: any) {
             this.notify.error(err.message);
         }
@@ -57,13 +54,13 @@ export class ProductCardComponent implements OnInit {
         this.item = await this.cartService.addItemToCartAsync(this.item);
     }
 
-    public async handlePlus() {
+    public async plus() {
         this.item.quantity = this.item.quantity + 1;
         this.item.totalPrice = this.product.price * this.item.quantity;
         await this.cartService.updateItemAsync(this.item);
     }
 
-    public async handleMinus() {
+    public async minus() {
         this.item.quantity = this.item.quantity - 1;
         if (this.item.quantity <= 0) {
             await this.cartService.deleteItemAsync(this.item._id);
@@ -73,9 +70,6 @@ export class ProductCardComponent implements OnInit {
         await this.cartService.updateItemAsync(this.item);
     }
 
-    public handeEditProduct(){
-        
-    }
     ngOnDestroy(): void {
         this.unsubscribeMe();
     }

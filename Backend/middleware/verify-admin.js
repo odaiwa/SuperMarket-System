@@ -8,14 +8,13 @@ function verifyIsAdmin(request, response, next) {
     if (!token)
         return response.status(401).send("You are not logged in!");
 
-    jwt.verify(token, global.config.jwtKey, (err, payload) => { // payload.user is the user object
+    jwt.verify(token, global.config.jwtKey, (err, payload) => { 
         if (err && err.message === "jwt expired")
             return response.status(403).send("Your login session has expired.");
 
         if (err)
             return response.status(401).send("You are not logged in!");
 
-        // check also that the user is Admin (we need additional database column: isAdmin):
         if (!payload.payload.isAdmin) return response.status(403).send("You are not authorized.");
 
         next();

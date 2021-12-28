@@ -18,7 +18,7 @@
                         <mat-label>סיסמה:</mat-label>
                         <input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="credentials.password"
                             name="password">
-                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                             [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
@@ -27,9 +27,6 @@
             </div>
 
             <button mat-raised-button color="primary">התחבר</button>
-            <div class="forget-password">
-                <a routerLink="#">שכחת סיסמה?</a>
-            </div>
 
             <div class="new-account">
                 <p>אין לך חשבון? <a routerLink="/register">הרשם למערכת</a></p>

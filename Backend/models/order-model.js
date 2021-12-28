@@ -4,33 +4,33 @@ const OrderSchema = mongoose.Schema({
 
     userId: {
         type: String,
-        required: [true, "user ID required"],
+        required: true
     },
     cartId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: [true, "cart ID required"],
+        required: true
     },
     price: {
         type: Number,
-        required: [true, "price required"],
-        min: [0, "price can't be negative"],
+        required: true,
+        min: 0, 
     },
     city: {
         type: String,
-        minLength: [2, "city should be at least 2 letters"],
-        maxLength: [50, "city should be at most 50 letters"],
-        required: [true, "city required"]
+        minLength: 2,
+        maxLength: 50,
+        required: true, 
     },
     street: {
         type: String,
-        minLength: [2, "street must be more than 2 chars"],
-        maxLength: [50, "street should be at most 50 letters"],
-        required: [true, "street required"]
+        minLength: 2, 
+        maxLength: 50,
+        required: true
     },
     deliveryDate: {
         type: Date,
         min: new Date(Date.now()).getDate() + 1,
-        required: [true, "Shipping Date required"]
+        required: true
     },
     initDate: {
         type: Date,
@@ -38,10 +38,9 @@ const OrderSchema = mongoose.Schema({
     },
     creditCard: {
         type: String,
-        minLength: [4, "Credit Card Number must be 4 digits"],
-        maxLength: [4, "Credit Card Number must be 4 digits"],
-        required: [true, "Credit Card Number required"]
-
+        minLength:6,
+        maxLength: 6,
+        required: true
     }
 
 }, { versionKey: false, toJSON: { virtuals: true }, id: false });

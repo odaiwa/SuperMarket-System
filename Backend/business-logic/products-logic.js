@@ -1,16 +1,12 @@
 const ProductModel = require("../models/product-model");
-const CategoryModel = require("../models/category-model");
 const path = require("path");
 const uuid = require("uuid");
-const { deleteFile } = require("../helpers/file-helper");
 
 function getAllProductsAsync() {
     return ProductModel.find().populate("category").exec();
 }
 
-function getAllCategoriesAsync() { 
-    return CategoryModel.find().exec(); 
-}
+
 
 function getProductsByCategoryAsync(categoryId) {
     return ProductModel.find({ categoryId }).exec();
@@ -51,7 +47,6 @@ module.exports = {
     getOneProductAsync,
     getProductsByCategoryAsync,
     addProductAsync,
-    getAllCategoriesAsync,
     deleteProductAsync,
     updateProductAsync
 }

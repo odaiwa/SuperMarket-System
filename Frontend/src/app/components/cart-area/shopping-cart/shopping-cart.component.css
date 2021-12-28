@@ -1,0 +1,20 @@
+.card {
+    width: 360px;
+    border-radius: 10px;
+    padding: 2px 10px;
+}
+table{
+    width:100%;
+}
+table, th, td {
+    border:1px solid black;
+  }
+
+  .delete-element{
+      color: brown;
+      cursor: pointer;
+  }
+  .pay-now{
+      text-align: center;
+      margin:3px auto;
+  }

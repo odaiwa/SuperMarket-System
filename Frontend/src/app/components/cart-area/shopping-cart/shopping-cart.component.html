@@ -1,0 +1,33 @@
+<div class="card">
+    <div>
+        <span>פרטים בסל {{cartItems.length}} </span><br>
+        <span>מחיר לתשלום {{ cartTotalPrice | currency:'ILS' }}</span>
+    </div>
+
+    <div>
+        <div *ngIf="cartItems.length === 0">הסל שלך ריק</div>
+        <div *ngIf="cartItems.length > 0">
+            <table>
+                    <tr>
+                        <th>שם מוצר</th>
+                        <th>קמות</th>
+                        <th>מחיר</th>
+                        <th>מחק</th>
+                    </tr>
+                <tbody>
+                    <tr *ngFor="let item of cartItems">
+                            <td>{{item.product.name}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{ (item.quantity * item.product.price) | currency:'ILS' }}</td>
+                            <td (click)="deleteItem(item._id)" class="delete-element">x</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div *ngIf="cartItems.length !== 0" class="pay-now">
+        <a type="button" id="checkout" routerLink="/order"><button mat-raised-button color="primary">מעבר
+                לתשלום</button></a>
+    </div>
+
+</div>

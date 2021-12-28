@@ -4,11 +4,11 @@ const CartSchema = mongoose.Schema({
 
     userId:{
         type: String,
-        require: [true, "user id required"]
+        require: true, 
     },
     date: {
         type: Date,
-        required: [true, "cart date required"],
+        required: true, 
         default: Date.now
     }, 
 

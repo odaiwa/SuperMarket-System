@@ -1,0 +1,33 @@
+.login-form>form {
+    border: 1px solid rgb(47,79,79);
+  width: 290px;
+  height: 420px;
+  padding: 20px;
+  text-align: center;
+  margin: auto;
+  margin-top: 30px;
+  border-radius: 20px;
+  background-color: rgba(192, 192, 192, 0.6);
+}
+.login-container{
+    margin-top:40px;
+}
+.email-input {
+  width: 95%;
+}
+input{
+    margin:0 5px;
+}
+button {
+  width: 90%;
+  margin-top:10px;
+}
+
+.inputs-container {
+  /* margin-top: 30%; */
+}
+
+.new-account {
+  text-align: center;
+  margin-top: 26%;
+}

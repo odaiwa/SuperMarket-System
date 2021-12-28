@@ -6,34 +6,41 @@ import { Notyf } from 'notyf';
 })
 export class NotifyService {
 
-    private notification = new Notyf({ duration: 5000, position: { x: "center", y: "top" } });
+    private notification = new Notyf({ duration: 5000, position: { x: "right", y: "top" } });
 
-    public success(message: string): void { //success notify
-        this.notification.success(message);
+    public success(message: string): void {
+        this.notification.success(message); // Green
     }
 
-    public error(err: any): void { //error notify
+    public error(err: any): void {
         const message = this.getErrorMessage(err);
-        this.notification.error(message);
+        this.notification.error(message); // Red
     }
 
     private getErrorMessage(err: any): string {
+
+        // Frontend exception throwing a string, e.g: throw "...":
         if (typeof err === "string") {
             return err;
         }
 
+        // http receives a string error, e.g: 401, 403, 404, 500:
         if (typeof err.error === "string") {
             return err.error;
         }
 
+        // http receives an array of errors, e.g: 400:
         if (Array.isArray(err.error)) {
             return err.error[0];
         }
 
+        // Frontend exception throwing one of the Error types, e.g: throw new Error("..."), throw new RangeError("...") etc.
+        // Note: must be last cause previous one also can also contain a message:
         if (typeof err.message === "string") {
             return err.message;
         }
 
+        // Any other error format: 
         return "Some error occurred, please try again.";
     }
 

@@ -30,6 +30,9 @@ router.get("/items/cart/:_id", verifyLoggedIn, async (request, response) => {
     try {
         const _id = request.params._id;
         console.log(_id);
+        if(_id === undefined){
+            return response.status(406).send("Bad request");
+        }
         const items = await logic.getItemsByCartIdAsync(_id);
         response.json(items);
     }
@@ -65,6 +68,7 @@ router.patch("/items/:_id", verifyLoggedIn, async (request, response) => {
     try {
         const _id = request.params._id;
         request.body._id = _id;
+        console.log(_id);
         const item = new ItemModel(request.body);
 
         const updatedItem = await logic.updateItemAsync(item);

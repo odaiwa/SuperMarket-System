@@ -1,50 +1,51 @@
 .login-form>form {
-  border: 1px solid gray;
-  width: 350px;
-  min-height: 300px;
-  max-height: 900px;
-  padding: 20px;
-  text-align: center;
-  margin: auto;
-  margin-top: 50px;
-  border-radius: 20px;
-  background-color: aliceblue;
+    border: 1px solid gray;
+    width: 350px;
+    min-height: 300px;
+    max-height: 900px;
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    background-color: rgba(192, 192, 192, 0.6);
 }
-
-.email-input {
-  width: 95%;
-  margin: 5px;
-}
-
-button {
-  width: 90%;
-  margin-top: 5px;
-}
-
-.forget-password {
-  margin-top: 5px;
-}
-
-.inputs-container {
-  margin-top: 10%;
-}
-
-.new-account {
-  text-align: center;
-  position: absolute;
-  margin-right:4%;
-  /* margin-top: 28%; */
-}
-
-.errors-span{
+  
+  .email-input {
+    width: 95%;
+    margin: 5px;
+  }
+  
+  button {
+    width: 90%;
+    margin-top: 5px;
+  }
+  
+  .forget-password {
+    margin-top: 5px;
+  }
+  
+  .inputs-container {
+    margin-top: 10%;
+  }
+  
+  .new-account {
+    text-align: center;
     position: absolute;
-    margin-bottom: 5px;
-    color: red;
-    /* margin-top: 10%; */
-    display: block;
-    margin-top: -20px;
-    margin-right:20px;
-    /* margin-bottom: 2px; */
-}
-input{
-}
+    margin-right:4%;
+    /* margin-top: 28%; */
+  }
+  
+  .errors-span{
+      position: absolute;
+      margin-bottom: 5px;
+      color: red;
+      /* margin-top: 10%; */
+      display: block;
+      margin-top: -20px;
+      margin-right:20px;
+      /* margin-bottom: 2px; */
+  }
+  input{
+  }
+  
