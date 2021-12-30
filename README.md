@@ -24,7 +24,9 @@
     npm i -g @angular/cli
 </div>
 <div>
-    4. download and install <a href="https://www.mongodb.com/try/download/community">MongoDB</a> and import the database
+    4. download and install <a href="https://www.mongodb.com/try/download/community">MongoDB</a> and import the database <br>
+   mongodb <a href="https://docs.mongodb.com/compass/current/import-export/#import-and-export-data">documentation</a> explaining how to import database
+ </div>  
     
     
 <h2 align="center">how to run the project:</h2>
