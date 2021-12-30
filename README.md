@@ -19,12 +19,18 @@
     <p>2. Download and install <a href="https://code.visualstudio.com/download">VS Code</a> </p>
 </div>
 <div>
-    <p>3. install Angular12  </p>
+    3. download and install typescript
+    
+    npm install -g typescript
+    
+</div>    
+<div>
+    <p>4. install Angular12  </p>
 
     npm i -g @angular/cli
 </div>
 <div>
-    4. download and install <a href="https://www.mongodb.com/try/download/community">MongoDB</a> and import the database <br>
+    5. download and install <a href="https://www.mongodb.com/try/download/community">MongoDB</a> and import the database <br>
    mongodb <a href="https://docs.mongodb.com/compass/current/import-export/#import-and-export-data">documentation</a> explaining how to import database
  </div>  
     
